@@ -32,8 +32,6 @@ use OC\User\Database;
 use OCA\Airavata\Service\LoggingService;
 use OCA\Airavata\Service\SettingsService;
 use OCP\IUserBackend;
-use OCP\User\IProvidesDisplayNameBackend;
-use OCP\User\IProvidesHomeBackend;
 
 
 class UserBackend extends Database
@@ -76,18 +74,18 @@ class UserBackend extends Database
     }
 
     public function getDisplayName($uid): string {
-        $this->loggingService->write(\OCP\Util::ERROR, 'Get display name ' . $uid);
+        $this->loggingService->write(\OCP\Util::DEBUG, 'Get display name for ' . $uid);
         return $uid;
     }
 
     public function getDisplayNames($search = '', $limit = null, $offset = null)
     {
-        $this->loggingService->write(\OCP\Util::ERROR, 'Get display names ' . $search);
+        $this->loggingService->write(\OCP\Util::DEBUG, 'Get display names for query ' . $search);
         return $this->getUsers($search, $limit, $offset);
     }
 
     public function userExists($uid) {
-        $this->loggingService->write(\OCP\Util::ERROR, 'Uses exists ' . $uid);
+        $this->loggingService->write(\OCP\Util::DEBUG, 'Checking uses exists ' . $uid);
 
         $users = $this->getUsers($uid, null, null);
         if (count($users) == 0) {
@@ -107,7 +105,7 @@ class UserBackend extends Database
      */
     public function getUsers($search = '', $limit = null, $offset = null)
     {
-        $this->loggingService->write(\OCP\Util::ERROR, 'Get users2 ' . $search . $this->settingsService->getAiravataKeycloakUrl());
+        $this->loggingService->write(\OCP\Util::DEBUG, 'Get users for query ' . $search);
 
         $realm = $this->settingsService->getAiravataRealm();
         $client = new Client([
@@ -163,7 +161,7 @@ class UserBackend extends Database
     public function checkPassword($uid, $password)
     {
 
-        $this->loggingService->write(\OCP\Util::ERROR, 'Checking password for CAS login user ' . $uid);
+        $this->loggingService->write(\OCP\Util::INFO, 'Checking password for Airavata user ' . $uid);
 
         $realm = $this->settingsService->getAiravataRealm();
         $client = new Client([
