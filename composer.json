@@ -1,0 +1,15 @@
+{
+  "name": "dimuthuupe/airavata-nextcloud-app",
+  "description": "Integrates Airavata userbase with NextCloud",
+  "minimum-stability": "stable",
+  "license": "Apache License 2.0",
+  "authors": [
+    {
+      "name": "Dimuthu Wannipurage",
+      "email": "dimuthu.upeksha2@gmail.com"
+    }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "~6.0"
+  }
+}

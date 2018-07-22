@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<info>
+    <id>airavata-nextcloud-app</id>
+    <name>Airavata user and group backend</name>
+    <description>This app seamlessly integrates Airavata Keycloak based user base into NextCloud enabling existing Airavata users to directly authenticate through their Airavata credentials into their NextCloud space</description>
+    <summary>Authenticate users against an Airavata user store backed by Keycload</summary>
+    <licence>Apache License 2.0</licence>
+    <screenshot></screenshot>
+    <author>Dimuthu Wannipurage</author>
+    <namespace>Airavata</namespace>
+    <version>0.0.1</version>
+    <types>
+        <prelogin/>
+        <authentication/>
+    </types>
+
+    <category>security</category>
+
+    <website>https://github.com/DImuthuUpe/airavata-nextcloud-app.git</website>
+
+    <documentation>
+        <user>https://github.com/DImuthuUpe/airavata-nextcloud-app/wiki</user>
+        <admin>https://github.com/DImuthuUpe/airavata-nextcloud-app/wiki</admin>
+        <developer>https://github.com/DImuthuUpe/airavata-nextcloud-app/wiki</developer>
+    </documentation>
+
+    <bugs>https://github.com/DImuthuUpe/airavata-nextcloud-app/issues</bugs>
+
+    <repository type="git">https://github.com/DImuthuUpe/airavata-nextcloud-app.git</repository>
+
+    <dependencies>
+        <php min-version="5.6" max-version="7.1.99"/>
+        <owncloud min-version="10.0.0" max-version="10.0.8"/>
+        <nextcloud min-version="13.0.0" max-version="13.0.4"/>
+    </dependencies>
+
+    <settings>
+        <admin>OCA\Airavata\Panels\Settings</admin>
+    </settings>
+</info>
