@@ -20,7 +20,7 @@
  */
 
 script('airavata-nextcloud-app', 'settings');
-style('airavata-next-cloud-app', 'settings');
+style('airavata-nextcloud-app', 'settings');
 
 ?>
 
@@ -70,7 +70,6 @@ style('airavata-next-cloud-app', 'settings');
                 value="<?php p($_['airavata_keycloak_client_id']); ?>"/>
         </p>
     </fieldset>
-    <input type="hidden" value="<?php p($_['requesttoken']); ?>" name="requesttoken"/>
     <input id="airavataSettingsSubmit" type="submit" value="<?php p($l->t('Save')); ?>"/>
 </div>
 </form>
