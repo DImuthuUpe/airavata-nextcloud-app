@@ -56,7 +56,7 @@ deployment.
 
 ## Verification
 
-* To verify whether App is properly configured, go to Users window and it should show all the Users and groups currently 
+* To verify whether App is properly configured, go to Users window and it should show all the Users and Groups that are currently 
 registered in Airavata.
 
     ![Alt text](/screenshots/users.png)
@@ -64,3 +64,20 @@ registered in Airavata.
 * Logout from Admin and try to Login as an Airavata user
 
 * Share  files among users and groups to verify the sharing feature
+
+## WebDAV API
+
+Airavata users can use NextCloud WebDAV API to access their files using their Airavata credentials. Example WebDAV invocation
+through curl to list all the files in user directory is as below
+
+`curl -u '<Airavata User>:<Password>' 'http://<NextCloud Endpoint>/remote.php/dav/files/<Airavata User>' -X PROPFIND --data '<?xml version="1.0" encoding="UTF-8"?>
+ <d:propfind xmlns:d="DAV:">
+   <d:prop xmlns:oc="http://owncloud.org/ns">
+     <d:getlastmodified/>
+     <d:getcontentlength/>
+     <d:getcontenttype/>
+     <oc:permissions/>
+     <d:resourcetype/>
+     <d:getetag/>
+   </d:prop>
+ </d:propfind>'`
