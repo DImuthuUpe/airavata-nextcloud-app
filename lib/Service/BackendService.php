@@ -22,6 +22,7 @@
 
 namespace OCA\Airavata\Service;
 
+use OCA\Airavata\Backends\GroupBackend;
 use OCA\Airavata\Backends\UserBackend;
 use \OCP\IUserManager;
 use \OCP\IGroupManager;
@@ -35,19 +36,27 @@ class BackendService
 
     private $userBackend;
 
+    private $groupBackend;
+
     private $loggingService;
 
     public function __construct(IUserManager $userManager,
-                                IGroupManager $groupManager, UserBackend $userBackend, LoggingService $loggingService)
+                                IGroupManager $groupManager, UserBackend $userBackend, GroupBackend $groupBackend, LoggingService $loggingService)
     {
         $this->userManager = $userManager;
         $this->groupManager = $groupManager;
         $this->userBackend = $userBackend;
+        $this->groupBackend = $groupBackend;
         $this->loggingService = $loggingService;
     }
 
     public function registerUserBackend()
     {
         $this->userManager->registerBackend($this->userBackend);
+    }
+
+    public function registerGroupBackend()
+    {
+        $this->groupManager->addBackend($this->groupBackend);
     }
 }

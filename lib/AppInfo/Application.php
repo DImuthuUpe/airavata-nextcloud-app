@@ -22,6 +22,7 @@
 
 namespace OCA\Airavata\AppInfo;
 
+use OCA\Airavata\Backends\GroupBackend;
 use \OCP\AppFramework\App;
 use \OCP\IContainer;
 
@@ -78,11 +79,16 @@ class Application extends App
             );
         });
 
+        $container->registerService('GroupBackend', function (IContainer $c) {
+            return new GroupBackend();
+        });
+
         $container->registerService('BackendService', function (IContainer $c) {
             return new BackendService(
                 $c->query('ServerContainer')->getUserManager(),
                 $c->query('ServerContainer')->getGroupManager(),
                 $c->query('UserBackend'),
+                $c->query('GroupBackend'),
                 $c->query('LoggingService')
             );
         });

@@ -39,4 +39,5 @@ if (\OCP\App::isEnabled($c->getAppName()) && !\OC::$CLI && $enabled) {
 
     // Register User Backend
     $backendService->registerUserBackend();
+    $backendService->registerGroupBackend();
 }
