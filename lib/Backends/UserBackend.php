@@ -160,7 +160,8 @@ class UserBackend extends Database
      */
     public function checkPassword($uid, $password)
     {
-
+        //Test if we get the value from the function getPgaClientId()
+        echo $this->settingsService->getPgaClientId();
         $this->loggingService->write(\OCP\Util::INFO, 'Checking password for Airavata user ' . $uid);
 
         $realm = $this->settingsService->getAiravataRealm();

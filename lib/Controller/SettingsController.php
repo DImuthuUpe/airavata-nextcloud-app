@@ -42,7 +42,7 @@ class SettingsController extends Controller
 
 
     public function saveSettings($airavata_keycloak_url, $airavata_apiserver_url, $airavata_realm, $airavata_keycloak_superuser_name,
-                                 $airavata_keycloak_superuser_password, $airavata_keycloak_auth_granttype, $airavata_keycloak_client_id)
+                                 $airavata_keycloak_superuser_password, $airavata_keycloak_auth_granttype, $airavata_keycloak_client_id, $pga_client_id)
     {
         try {
             $this->config->setAppValue($this->appName, 'airavata_apiserver_url', $airavata_apiserver_url);
@@ -52,7 +52,7 @@ class SettingsController extends Controller
             $this->config->setAppValue($this->appName, 'airavata_keycloak_auth_granttype', $airavata_keycloak_auth_granttype);
             $this->config->setAppValue($this->appName, 'airavata_keycloak_client_id', $airavata_keycloak_client_id);
             $this->config->setAppValue($this->appName, 'airavata_realm', $airavata_realm);
-
+            $this->config->setAppValue($this->appName, 'pga_client_id', $pga_client_id);
             return array(
                 'code' => 200,
                 'message' => 'Your Airavata settings have been updated.'

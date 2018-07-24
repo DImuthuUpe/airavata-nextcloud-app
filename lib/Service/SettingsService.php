@@ -68,4 +68,9 @@ class SettingsService
     {
         return $this->config->getAppValue('user_cas', 'airavata_keycloak_superuser_password', '');
     }
+
+    public function getPgaClientId()
+    {
+        return $this->config->getAppValue('user_cas', 'pga_client_id', '');
+    }
 }

@@ -69,6 +69,11 @@ style('airavata-nextcloud-app', 'settings');
                 name="airavata_keycloak_client_id"
                 value="<?php p($_['airavata_keycloak_client_id']); ?>"/>
         </p>
+        <p><label for="pga_client_id"><?php p($l->t('Airavata Keycloak pga client id')); ?></label><input
+                    id="pga_client_id"
+                    name="pga_client_id"
+                    value="<?php p($_['pga_client_id']); ?>"/>
+        </p>
     </fieldset>
     <input id="airavataSettingsSubmit" type="submit" value="<?php p($l->t('Save')); ?>"/>
 </div>
