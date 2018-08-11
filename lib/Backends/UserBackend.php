@@ -152,12 +152,6 @@ class UserBackend extends Database
 
         return $userIds;
     }
-	
-    
-     public function validate_token_keycloak(String $password) :bool 
-     {
-	return true;
-     }
 
     /**
      * @param string $uid
