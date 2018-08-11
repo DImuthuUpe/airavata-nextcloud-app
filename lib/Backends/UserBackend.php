@@ -158,11 +158,46 @@ class UserBackend extends Database
      * @param string $password
      * @return string|bool The users UID or false
      */
-    public function checkPassword($uid, $password)
+    public function checkPassword($uid, $password) 
     {
+	//Validate the password as the oauth token
+    try {
+        $post_url = $this->settingsService->getAiravataKeycloakPgaIntrospectEndpoint();
+        $pgaclientid = $this->settingsService->getAiravataKeycloakPgaClientId();
+        $pgaclientsecret = $this->settingsService->getAiravataKeycloakPgaClientSecret();
+        $pgatokentype = $this->settingsService->getAiravataKeycloakPgaTokenType();
 
+        $curl = curl_init($post_url);
+        $fields = array(
+                        'client_id' => $pgaclientid,
+                        'client_secret' => $pgaclientsecret,
+                        'token_type_hint' => $pgatokentype,
+                        'token' => $password
+                        );
+        //Url-ify the data to prepare for the post request
+        $fields_string = http_build_query($fields);
+        //Open the connection   
+        $ch = curl_init();
+
+        //now set the url
+        curl_setopt($ch, CURLOPT_URL, $post_url);
+        curl_setopt($ch, CURLOPT_POST, 4);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$fields_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER, false);
+        //execute the post request
+        $result = curl_exec($ch);
+        //echo $result;
+        $result_json = json_decode($result,true);
+        //var_dump($result_json);
+        $result_boolean = $result_json["active"];
+	
+	if($result_boolean) {
+		return $uid;
+	}
+	
+	//Validate the actual password 
         $this->loggingService->write(\OCP\Util::INFO, 'Checking password for Airavata user ' . $uid);
-
         $realm = $this->settingsService->getAiravataRealm();
         $client = new Client([
             'base_uri' => $this->settingsService->getAiravataKeycloakUrl(),
@@ -178,11 +213,15 @@ class UserBackend extends Database
                 'client_id' => $this->settingsService->getAiravataKeycloakClientId()
             ]
         ]);
-
+	
         if ($token_response->getStatusCode() === 200) {
             return $uid;
-        } else {
+        }
+	else {
             return FALSE;
         }
-    }
+    } catch (\Exception $e) {
+	return FALSE;
+      }
+}
 }

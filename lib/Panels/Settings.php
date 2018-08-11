@@ -30,7 +30,7 @@ class Settings implements ISettings
 {
     private $params = array('airavata_keycloak_url', 'airavata_apiserver_url', 'airavata_realm',
         'airavata_keycloak_superuser_name', 'airavata_keycloak_superuser_password', 'airavata_keycloak_auth_granttype',
-        'airavata_keycloak_client_id');
+        'airavata_keycloak_client_id', 'client_id', 'client_secret', 'introspect_url', 'token_type');
 
     private $config;
 
