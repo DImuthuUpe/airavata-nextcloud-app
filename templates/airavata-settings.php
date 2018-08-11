@@ -69,13 +69,27 @@ style('airavata-nextcloud-app', 'settings');
                 name="airavata_keycloak_client_id"
                 value="<?php p($_['airavata_keycloak_client_id']); ?>"/>
         </p>
-        <p><label for="pga_client_id"><?php p($l->t('Airavata Keycloak pga client id')); ?></label><input
-                    id="pga_client_id"
-                    name="pga_client_id"
-                    value="<?php p($_['pga_client_id']); ?>"/>
+	<p><label for="client_id"><?php p($l->t('Airavata Keycloak PGA client id')); ?></label><input
+                id="client_id"
+                name="client_id"
+                value="<?php p($_['client_id']); ?>"/>
+        </p>
+	<p><label for="client_secret"><?php p($l->t('Airavata Keycloak PGA client Secret')); ?></label><input
+                id="client_secret"
+                name="client_secret"
+                value="<?php p($_['client_secret']); ?>"/>
+        </p>
+	 <p><label for="introspect_url"><?php p($l->t('Airavata Keycloak PGA OAuth Token Introspect Endpoint')); ?></label><input
+                id="introspect_url"
+                name="introspect_url"
+                value="<?php p($_['introspect_url']); ?>"/>
+        </p>
+	 <p><label for="token_type"><?php p($l->t('Airavata Keycloak PGA OAuth Token Type')); ?></label><input
+                id="token_type"
+                name="token_type"
+                value="<?php p($_['token_type']); ?>"/>
         </p>
     </fieldset>
     <input id="airavataSettingsSubmit" type="submit" value="<?php p($l->t('Save')); ?>"/>
 </div>
 </form>
-

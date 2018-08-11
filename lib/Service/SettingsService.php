@@ -36,41 +36,57 @@ class SettingsService
 
     public function getAiravataKeycloakUrl()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_keycloak_url', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_keycloak_url', '');
     }
 
     public function getAiravataApiserverUrl()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_apiserver_url', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_apiserver_url', '');
     }
 
     public function getAiravataKeycloakSuperUsername()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_keycloak_superuser_name', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_keycloak_superuser_name', '');
     }
 
     public function getAiravataKeycloakAuthGranttype()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_keycloak_auth_granttype', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_keycloak_auth_granttype', '');
     }
 
     public function getAiravataKeycloakClientId()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_keycloak_client_id', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_keycloak_client_id', '');
     }
 
     public function getAiravataRealm()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_realm', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_realm', '');
     }
 
     public function getAiravataKeycloakSuperUserPassword()
     {
-        return $this->config->getAppValue('user_cas', 'airavata_keycloak_superuser_password', '');
+        return $this->config->getAppValue('airavata-nextcloud-app', 'airavata_keycloak_superuser_password', '');
+    }
+    
+    public function getAiravataKeycloakPgaClientSecret()
+    {
+	return $this->config->getAppValue('airavata-nextcloud-app', 'client_secret', '');
+	#return "test";
     }
 
-    public function getPgaClientId()
+    public function getAiravataKeycloakPgaClientId()
     {
-        return $this->config->getAppValue('user_cas', 'pga_client_id', '');
+	return $this->config->getAppValue('airavata-nextcloud-app', 'client_id', '');
+    }	
+   
+    public function getAiravataKeycloakPgaIntrospectEndpoint() 
+    {
+	return $this->config->getAppValue('airavata-nextcloud-app', 'introspect_url', '');
+    }	
+	
+    public function getAiravataKeycloakPgaTokenType()
+    {
+        return $this->config->getAppValue('airavata-nextcloud-app', 'token_type', '');
     }
 }
